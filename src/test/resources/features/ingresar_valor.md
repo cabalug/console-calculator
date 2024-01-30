@@ -5,33 +5,25 @@ Feature: Ingresar valor
   quiero ingresar un valor al sistema
   para calcular la suma de dos números enteros
 
-  Scenario: Ingresar un número entero positivo
-    Given Juan ingreso al sistema
-    When ingresa un número entero positivo
+  Background:
+    Given Juan ingresó al sistema
+
+  Scenario Outline: Ingresar un número entero
+    When cuando ingresa un número: <valor>
     Then el número es ingresado
     And Juan puede ingresar otro número
+    Examples:
+      | valor           |
+      | Entero positivo |
+      | Entero negativo |
 
-  Scenario: Ingresar un número entero negativo
-    Given Juan ingreso al sistema
-    When ingresa un número entero negativo
-    Then el número es ingresado
-    And Juan puede ingresar otro número
-
-  Scenario: Ingresar un número decimal
-    Given Juan ingreso al sistema
-    When ingresa un número decimal
+  Scenario Outline: Ingresar valores inválidos
+    When ingresa un valor: <valor>
     Then Juan es informado que: "El número debe ser entero"
     And Juan puede ingresar otro número
-
-  Scenario: Ingresar letras
-    Given Juan ingreso al sistema
-    When ingresa una letra
-    Then Juan es informado que: "El número debe ser entero"
-    And Juan puede ingresar otro número
-
-  Scenario: Ingresar caracteres especiales
-    Given Juan ingreso al sistema
-    When ingresa caracteres especiales
-    Then Juan es informado que: "El número debe ser entero"
-    And Juan puede ingresar otro número
+    Examples:
+      | valor             |
+      | carácter especial |
+      | número decimal    |
+      | letra             |
 ```
