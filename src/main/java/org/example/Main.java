@@ -23,6 +23,7 @@ public class Main {
                 System.out.println("El número debe ser entero");
                 esEntero = false;
             }
+
         } while (esEntero == false);
         do {
             try {
@@ -39,6 +40,7 @@ public class Main {
                 esEntero = false;
             }
         } while (esEntero == false);
+        System.out.println("El resultado es: "+(numero1 + numero2));
 
     }
 }
