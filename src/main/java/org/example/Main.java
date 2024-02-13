@@ -8,16 +8,23 @@ public class Main {
 
         int numero1 = 0;
         int numero2 = 0;
+
+        numero1 = getValue("Enter the first number");
+        numero2 = getValue("Enter the second number");
+
+        System.out.println("El resultado es: " + addition(numero1, numero2));
+
+    }
+
+    public static int getValue(String message) {
+        int number = 0;
         boolean esEntero = false;
+
         do {
             try {
 
-                System.out.println("===================");
-                System.out.println("DAME UN NUMERO");
-                System.out.println("===================");
-                numero1 = Integer.parseInt(teclado.next());
+                number = enterValue(message);
                 esEntero = true;
-
 
             } catch (NumberFormatException error) {
                 System.out.println("El número debe ser entero");
@@ -25,22 +32,20 @@ public class Main {
             }
 
         } while (esEntero == false);
-        do {
-            try {
+        return number;
+    }
 
-                System.out.println("===================");
-                System.out.println("DAME OTRO NUMERO");
-                System.out.println("===================");
-                numero2 = Integer.parseInt(teclado.next());
-                esEntero = true;
+    public static int enterValue(String message) {
+        Scanner teclado = new Scanner(System.in);
 
+        System.out.println("===================");
+        System.out.println(message);
+        System.out.println("===================");
 
-            } catch (NumberFormatException error) {
-                System.out.println("El número debe ser entero");
-                esEntero = false;
-            }
-        } while (esEntero == false);
-        System.out.println("El resultado es: "+(numero1 + numero2));
+        return Integer.parseInt(teclado.next());
+    }
 
+    public static int addition(int num1, int num2) {
+        return num1 + num2;
     }
 }
